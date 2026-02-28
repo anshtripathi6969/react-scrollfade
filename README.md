@@ -1,89 +1,101 @@
 <div align="center">
   <br />
   <img src="https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/layers.svg" alt="ScrollFade Logo" width="80" height="80" />
-  <h1>ScrollFade Documentation Site</h1>
+  <h1>React ScrollFade</h1>
   <p>
-    <strong>The official showcase and documentation website for the ScrollFade React component.</strong>
+    <strong>A lightweight, zero-dependency fade-in-on-scroll React component.</strong>
   </p>
 
   <p>
-    <a href="https://github.com/anshtripathi6969/react-scrollfade"><img src="https://img.shields.io/badge/Package-React_ScrollFade-blue.svg?style=flat-square" alt="Package Link" /></a>
-    <img src="https://img.shields.io/github/stars/anshtripathi6969/scrollfade-new?style=flat-square" alt="GitHub stars" /></a>
-    <img src="https://img.shields.io/github/license/anshtripathi6969/scrollfade-new?style=flat-square" alt="License" />
+    <a href="https://www.npmjs.com/package/@anshtripathi8989/scrollfade"><img src="https://img.shields.io/npm/v/@anshtripathi8989/scrollfade" alt="NPM Version" /></a>
+    <a href="https://bundlephobia.com/package/@anshtripathi8989/scrollfade"><img src="https://img.shields.io/bundlephobia/minzip/@anshtripathi8989/scrollfade" alt="Bundle Size" /></a>
     <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white" />
-    <img alt="Vite" src="https://img.shields.io/badge/Vite-B73BFE?style=flat-square&logo=vite&logoColor=FFD62E" />
-    <img alt="TailwindCSS" src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white" />
   </p>
   
   <p>
-    <i>Smooth fade-in on scroll. Zero dependencies. Powered by IntersectionObserver.</i>
+    <i>Smooth fade-in on scroll. Zero dependencies. Powered by native IntersectionObserver.</i>
+  </p>
+  <p>
+    <strong>🌍 Interactive Docs & Live Demo: <a href="https://scrollfade-new.vercel.app/">https://scrollfade-new.vercel.app/</a></strong>
   </p>
 </div>
 
 ---
 
-## ✨ Overview
+## ✨ Why ScrollFade?
 
-This repository houses the source code for the stunning, interactive documentation and showcase website for **[ScrollFade](https://github.com/anshtripathi6969/react-scrollfade)**.
+Heavy animation libraries (like Framer Motion) are amazing, but often overkill for 90% of use cases where you just want elements to elegantly fade in as the user scrolls down the page. 
 
-The website is designed to reflect the premium, lightweight nature of the package itself with a dark-mode forward aesthetic, buttery smooth micro-animations, and immediate visual feedback.
+**ScrollFade** solves this by providing:
+- 📦 **Zero Dependencies**: Doesn't bloat your node_modules.
+- ⚡ **Native IntersectionObserver**: Uses the highly optimized browser API.
+- 🪶 **Tiny Bundle Size**: Adds effectively nothing (< 2kb) to your final build.
+- 🛡️ **Fully Typed**: Built with TypeScript for great autocomplete.
+- 🎨 **Hardware Accelerated**: Uses CSS 3D transforms for buttery 60fps animations.
 
-### Key Sections of the Site:
-- **Hero & Animated Background:** Immediate visual confirmation of what the package does.
-- **Interactive Playground:** Real-time prop modification (`duration`, `delay`, `direction`, `threshold`) with auto-generating JSX snippets matching your selections.
-- **Live Example Demos:** Grid-based visualization of common usage patterns.
-- **Performance Comparisons:** Highlighting differences compared to behemoth animation frameworks.
+## 🚀 Installation
 
-## 🛠️ Tech Stack
-
-This project is built using modern front-end tooling optimized for purely static sites:
-- **[React](https://react.dev/) 18**
-- **[TypeScript](https://www.typescriptlang.org/)** - For type-safe components.
-- **[Vite](https://vitejs.dev/)** - Lightning fast HMR and minimal build configurations.
-- **[Tailwind CSS v3](https://tailwindcss.com/)** - Utility-first styling including custom animations.
-- **[Lucide React](https://lucide.dev/)** - Beautiful & consistent iconography.
-
-## 🚀 Local Development
-
-To run this documentation website on your local machine:
-
-**1. Clone the repository**
-```bash
-git clone https://github.com/anshtripathi6969/scrollfade-new.git
-cd scrollfade-new
-```
-
-**2. Install dependencies**
-```bash
-npm install
-```
-
-**3. Start the dev server**
-```bash
-npm run dev
-```
-
-The site will be available on `http://localhost:5173`.
-
-## 📦 Building for Production
-
-To create an optimized production build:
+Install via your preferred package manager:
 
 ```bash
-npm run build
+npm install @anshtripathi8989/scrollfade
+```
+```bash
+yarn add @anshtripathi8989/scrollfade
+```
+```bash
+pnpm add @anshtripathi8989/scrollfade
 ```
 
-This will run TypeScript checks and output a `dist/` directory ready to be deployed to static hosting providers like Vercel, Netlify, or GitHub Pages.
+## 💻 Usage
+
+Wrap any React node with `<ScrollFade>` and it will automatically animate into view when the user scrolls to it!
+
+```jsx
+import { ScrollFade } from '@anshtripathi8989/scrollfade';
+
+export default function MyPage() {
+  return (
+    <main>
+      {/* 1. Default usage (slides up) */}
+      <ScrollFade>
+        <h1>Welcome to my website!</h1>
+      </ScrollFade>
+
+      {/* 2. Customizing direction and timing */}
+      <ScrollFade direction="left" delay={200} duration={0.8}>
+        <p>This paragraph gently slides in from the left side.</p>
+      </ScrollFade>
+      
+      {/* 3. Re-triggering animation when scrolling back up */}
+      <ScrollFade once={false}>
+        <div>I animate every time I enter the viewport</div>
+      </ScrollFade>
+    </main>
+  );
+}
+```
+
+## ⚙️ Props API
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `ReactNode` | **Required** | The elements to be animated. |
+| `direction` | `'up' \| 'down' \| 'left' \| 'right' \| 'none'` | `'up'` | The direction from which the element slides into its final position. |
+| `duration` | `number` | `0.6` | The length of the animation in seconds. |
+| `delay` | `number` | `0` | The delay before the animation starts in milliseconds. |
+| `once` | `boolean` | `true` | If true, animates only once. If false, re-animates every time it enters the viewport. |
+| `threshold` | `number` | `0.1` | How much of the element (0 to 1.0) must be visible before triggering. |
+| `className` | `string` | `''` | Optional CSS classes to pass to the wrapper `<div>`. |
+
+## 🎮 Interactive Playground
+
+Check out the [Live Demo & Playground](https://scrollfade-new.vercel.app/) to tweak delays, durations, directions, and thresholds and get instantly copyable JSX.
 
 ## 🤝 Contributing
 
-Contributions are always welcome. To contribute:
-1. Fork the project.
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`).
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
-4. Push to the branch (`git push origin feature/AmazingFeature`).
-5. Open a pull request.
+We welcome contributions! Please feel free to submit a Pull Request.
 
 ## 📜 License
 
-Distributed under the MIT License. Built with ❤️ by [Ansh Tripathi](https://github.com/anshtripathi6969).
+Distributed under the MIT License. Brought to you by [Ansh Tripathi](https://github.com/anshtripathi6969).
