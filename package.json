@@ -1,0 +1,49 @@
+{
+  "name": "@anshtripathi8989/scrollfade",
+  "version": "1.0.0",
+  "description": "Lightweight fade-in on scroll React component using IntersectionObserver",
+  "type": "module",
+  "main": "./dist/scrollfade.umd.js",
+  "module": "./dist/scrollfade.es.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/scrollfade.es.js",
+      "require": "./dist/scrollfade.umd.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "react",
+    "scroll",
+    "animation",
+    "fade",
+    "intersectionobserver",
+    "react-animation"
+  ],
+  "author": "Ansh Tripathi",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.2",
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@vitejs/plugin-react": "^4.2.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0",
+    "vite-plugin-dts": "^3.8.1"
+  }
+}
